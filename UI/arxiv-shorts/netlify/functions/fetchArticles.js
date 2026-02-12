@@ -6,9 +6,9 @@ export async function handler(event, context) {
 
   try {
     // Example: calling your actual backend API (API Gateway)
-    const response = await fetch(
-      `${process.env.CLOUDFRONT_URL}?date=${date}&page=${page}`
-    );
+    let url = process.env.CLOUDFRONT_URL;
+    console.log(url);
+    const response = await fetch(`${url}?date=${date}&page=${page}`);
     const data = await response.json();
 
     return {

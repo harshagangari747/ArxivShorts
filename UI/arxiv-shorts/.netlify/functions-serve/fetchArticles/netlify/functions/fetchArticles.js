@@ -25,9 +25,9 @@ module.exports = __toCommonJS(fetchArticles_exports);
 async function handler(event, context) {
   const { date, page } = event.queryStringParameters;
   try {
-    const response = await fetch(
-      `${process.env.CLOUDFRONT_URL}?date=${date}&page=${page}`
-    );
+    let url = process.env.CLOUDFRONT_URL;
+    console.log(url);
+    const response = await fetch(`${url}?date=${date}&page=${page}`);
     const data = await response.json();
     return {
       statusCode: 200,
